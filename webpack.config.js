@@ -18,7 +18,11 @@ module.exports = {
     port: 3000,
     open: true,
   },
-  entry: ["@babel/polyfill", path.resolve(__dirname, "src", "index.js")],
+  entry: [
+    "core-js/stable",
+    "regenerator-runtime/runtime",
+    path.resolve(__dirname, "src", "index.jsx"),
+  ],
   output: {
     path: path.resolve(__dirname, "dist"),
     clean: true,
@@ -62,12 +66,13 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
         generator: {
-          filename: "fonts/[name].[ext]",
+          filename: "fonts/[name][ext]",
         },
       },
-      //img
+      // img
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
+        type: "asset",
         use: [
           {
             loader: "image-webpack-loader",
@@ -75,7 +80,6 @@ module.exports = {
               mozjpeg: {
                 progressive: true,
               },
-              // optipng.enabled: false will disable optipng
               optipng: {
                 enabled: false,
               },
@@ -86,26 +90,27 @@ module.exports = {
               gifsicle: {
                 interlaced: false,
               },
-              // the webp option will enable WEBP
               webp: {
                 quality: 75,
               },
             },
           },
         ],
-        type: "asset",
       },
-      // js
+      // js and jsx
       {
-        test: /\.(?:js|mjs|cjs)$/i,
+        test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".jsx"],
   },
 };
