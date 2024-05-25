@@ -1,1 +1,1 @@
-# reackt-webpack-template
+# react-webpack-template
