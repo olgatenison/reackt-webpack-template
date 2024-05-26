@@ -20,6 +20,18 @@ This template is designed to quickly bootstrap web development projects using Re
 - **React Refresh Webpack Plugin**: Provides hot reloading of React components during development.
 - **@Redux Devtools Extension**: Browser extension for debugging Redux applications.
 
+#### Dependencies
+
+- **React**: A JavaScript library for building user interfaces.
+- **React DOM**: Entry point for React rendering on the web.
+- **React Router DOM**: DOM bindings for React Router.
+- **Redux Toolkit**: Simplifies Redux state management logic.
+- **React Redux**: Official React bindings for Redux.
+- **Axios: Promise** - based HTTP client for the browser and Node.js.
+- **Firebase**: SDK for Firebase services like Authentication, Realtime Database, and more.
+- **Yup**: A JavaScript schema builder for value parsing and validation.
+- **Styled Components**: CSS-in-JS library for styling React components.
+
 #### Scripts
 
 - **start**: Starts the development server using `webpack-dev-server`.
