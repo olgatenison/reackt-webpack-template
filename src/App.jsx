@@ -1,9 +1,15 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export const App = () => {
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <h1>Hello, React! </h1>
+      <BrowserRouter>
+        <button>COUNT</button>
+      </BrowserRouter>
     </div>
   );
 };
