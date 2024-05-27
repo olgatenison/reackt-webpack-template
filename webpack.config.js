@@ -1,13 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const mode = process.env.NODE_ENV || "development";
-
 const devMode = mode === "development";
-
 const target = devMode ? "web" : "browserslist";
-
 const devtool = devMode ? "source-map" : undefined;
 
 module.exports = {
@@ -35,6 +33,14 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[contenthash].css",
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "dist"),
+          to: path.resolve(__dirname, "docs"),
+        },
+      ],
     }),
   ],
   module: {
